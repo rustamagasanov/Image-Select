@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <link rel="stylesheet" href="stylesheets/chosen.css">
     <link rel="stylesheet" href="stylesheets/ImageSelect.css">
+    <link rel="stylesheet" href="stylesheets/codemirror.css">
+
     <script type="text/javascript" ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
@@ -49,9 +51,9 @@ have any feedback/improvements.</p>
 <h3>
 <a name="designer-templates" class="anchor" ><span class="octicon octicon-link"></span></a>Multiple Select</h3>
 
-<p>This example shows the Multiple select scenario.</p>
+<p>This example shows the Multiple select scenario. </p>
 
- <select  multiple="multiple" id="test" data-placeholder="Choose a Project..." class="my-select" style="width:350px;" tabindex="2">
+ <select  multiple="multiple" class="my-select">
      <option data-img-src="img/adnan.png">Adnan Sagar</option> 
      <option data-img-src="img/rena.png">Rena Cugelman</option> 
      <option data-img-src="img/tavis.png">Tavis Lochhead</option> 
@@ -61,29 +63,85 @@ have any feedback/improvements.</p>
 <br/>
 <br/>
 
-<pre><code> 
+<div class="xml-code" style="font-size:12px"><select  multiple="multiple" class="my-select">
+  <option data-img-src="img/adnan.png">Adnan Sagar</option> 
+  <option data-img-src="img/rena.png">Rena Cugelman</option> 
+  <option data-img-src="img/tavis.png">Tavis Lochhead</option> 
+  <option data-img-src="img/brian.png">Brain Cugelman</option> 
+</select></div>
+<br/>
+<p>Use <i style="color:red">data-img-src</i> attribute to attache images.</p>
 
-  <select  multiple="multiple" id="test" data-placeholder="Choose a Project..." class="my-select" style="width:350px;" tabindex="2">
+<div class="js-code" >
+  $(".my-select").chosen({
+    width:"100%",
+  });
+</div>
+<br/>
+
+
+<p>Enable <b>Image Select</b> by invoking the "<i>chosen</i>" method on the select element as per <a href="http://harvesthq.github.io/chosen/">Chosen documentation</a>.</p>
+
+<h3>
+<a name="designer-templates" class="anchor" ><span class="octicon octicon-link"></span></a>Single Select</h3>
+
+<p>For single select, remove the <i style="color:red">multiple</i> attribute. </p>
+
+ <select class="my-select">
+     <option>Please select, ...</option> 
      <option data-img-src="img/adnan.png">Adnan Sagar</option> 
      <option data-img-src="img/rena.png">Rena Cugelman</option> 
      <option data-img-src="img/tavis.png">Tavis Lochhead</option> 
      <option data-img-src="img/brian.png">Brain Cugelman</option> 
  </select>
 
-</code></pre>
+<br/>
+<br/>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
+<div class="xml-code" style="font-size:12px"><select class="my-select">
+  <option data-img-src="img/adnan.png">Adnan Sagar</option> 
+  <option data-img-src="img/rena.png">Rena Cugelman</option> 
+  <option data-img-src="img/tavis.png">Tavis Lochhead</option> 
+  <option data-img-src="img/brian.png">Brain Cugelman</option> 
+</select></div>
+<br/>
+<p>Use <i style="color:red">data-img-src</i> attribute to attache images.</p>
 
 <h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Custom Image</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p><b>Image Select</b> allows the customization of THML content it uses to insert images. For example, to style the image directly, add your own css classes, or define your own HTML markup which would include the image.</p>
+
+<p>The following example adds a black border to the images.</p>
+
+ <select multiple="multiple" class="my-select-border">
+     <option data-img-src="img/adnan.png">Adnan Sagar</option> 
+     <option data-img-src="img/rena.png">Rena Cugelman</option> 
+     <option data-img-src="img/tavis.png">Tavis Lochhead</option> 
+     <option data-img-src="img/brian.png">Brain Cugelman</option> 
+ </select>
+
+<p>It simply adds the required css styles directly to the image template</p>
+
+<div class="js-code" >
+  $(".my-select").chosen({
+    width:"100%",
+    html_template: '<img style="border:3px solid black;padding:0px;margin-right:4px"  class="{class_name}" src="{url}" />'
+  });
+</div>
+<br/>
+<p>Use the <i style="color:red">html_template</i> to write your own markup. Make sure you always include the two place hodlers <i style="color:red">{class_name}</i> and <i style="color:red">{url}</i>, which are being used internally to insert the approperiate class name, and image url for each options element</p>
 
 <h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Setup</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>To use <b>Image Select</b>, include the Javascript and style sheet files in your project. The Javascript file must be loaded after Chosen script.</p>
+
+<div class="xml-code" style="font-size:12px"><script src="jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="js/chosen.jquery.js" type="text/javascript"></script>
+<script src="js/ImageSelect.jquery.js" type="text/javascript"></script></div>
+<br/>
+
 
 <h3>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Dependencies</h3>
@@ -95,7 +153,7 @@ have any feedback/improvements.</p>
 <p>Having trouble with <b>Image Select</b>? Contact <a href="mailto:support@github.com">support@websemantics.ca</a> and we’ll help you sort it out.</p>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/websemantics"><img src="img/websemantics.gif"/></a></p>
+        <p>This project is maintained by</p><p style="text-align:center"> <a href="https://github.com/websemantics"><img src="img/websemantics.png"/></a>  <a href="https://github.com/cugels"><img src="img/alterspark.png"/></a></p>
         <p><small>© 2014 <a href="http://websemantics.ca">WebSemantics, Inc.</a> & <a href="http://alterspark.com">AlterSpark Corp.</a> <br/>Image Select is licensed under the <a href="https://github.com/websemantics/Image-Select/blob/master/LICENSE">MIT license</a>.</small></p>
       </footer>
     </div>
@@ -104,12 +162,53 @@ have any feedback/improvements.</p>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="javascripts/chosen.jquery.js" type="text/javascript"></script>
     <script src="javascripts/ImageSelect.jquery.js" type="text/javascript"></script>
+    <script src="javascripts/codemirror.js" type="text/javascript"></script>
+    <script src="javascripts/xml.js" type="text/javascript"></script>
+    <script src="javascripts/javascript.js" type="text/javascript"></script>
 
     <script type="text/javascript"> 
-     
+
+      $('.xml-code').each(function() {
+
+          var $this = $(this),
+              $code = $this.html();
+
+          $this.empty();
+
+          var myCodeMirror = CodeMirror(this, {
+              value: $code,
+              mode: 'xml',
+              lineWrapping: true,
+              lineNumbers: true,
+              readOnly: true
+          });
+
+      });
+
+      $('.js-code').each(function() {
+
+          var $this = $(this),
+              $code = $this.html();
+
+          $this.empty();
+
+          var myCodeMirror = CodeMirror(this, {
+              value: $code,
+              mode: 'javascript',
+              lineWrapping: true,
+              lineNumbers: true,
+              readOnly: true
+          });
+
+      });
+
       $(".my-select").chosen({
         width:"100%",
-        html_template: '<img class="{class_name}" src="{url}" />'
+      });
+
+      $(".my-select-border").chosen({
+        width:"100%",
+        html_template: '<img style="border:3px solid black;padding:0px;margin-right:4px"  class="{class_name}" src="{url}" />'
       });
 
     </script>

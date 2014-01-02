@@ -257,3 +257,7 @@ footer {
 .logo {
   margin-top: -60px;
 }
+
+.CodeMirror {
+    height: auto!important;   
+}
