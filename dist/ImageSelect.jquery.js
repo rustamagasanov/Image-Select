@@ -43,7 +43,9 @@ function prependTemplate(element, option, template, rtl, multiple, cls){
     // cls*: String (optional)
     //          Css styles class
     
-    if((src = $(option).data('img-src')) != undefined){
+    var src = $(option).data('img-src');
+    
+    if(src != undefined){
 
         element = $(element);
 
