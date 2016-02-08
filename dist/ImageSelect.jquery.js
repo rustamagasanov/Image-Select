@@ -97,9 +97,9 @@ var fn_chosen = $.fn.chosen;
 $.fn.extend({
  // summery:
  //  Extend the original 'chosen' method to support images
- chosen: function(options) {
+ chosen: function(params) {
 
-    options           = options || {};
+    params = params || {};
 
     // Original behavior - use function.apply to preserve context
     var ret = fn_chosen.apply(this, arguments);
@@ -123,7 +123,7 @@ $.fn.extend({
             var options       = getSelectedOptions(chosen.chosen);
             var rtl           = chosen.chosen.is_rtl;
             var multiple      = chosen.chosen.is_multiple;
-            var html_template = options.html_template || 
+            var html_template = params.html_template || 
                                 (rtl && multiple ? '{text}' + fn_template : fn_template + '{text}');
 
             for (var i = 0; i < options.length; i++){
@@ -144,7 +144,7 @@ $.fn.extend({
             var chosen        = chosen.chosen;
             var options       = chosen.form_field.options || [];
             var rtl           = chosen.is_rtl;
-            var html_template = options.html_template || 
+            var html_template = params.html_template || 
                                 rtl ? '{text}'+fn_template : fn_template+'{text}';
 
             var lis = $(chosen.container).find('.chosen-drop ul li:not(:has(img))')
