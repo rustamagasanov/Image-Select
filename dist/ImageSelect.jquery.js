@@ -45,7 +45,7 @@ function prependTemplate(element, option, template, rtl, multiple, cls){
     
     var src = $(option).data('img-src');
 
-    if(src != undefined){
+    if(src != undefined && src > ''){
 
         element = $(element);
 

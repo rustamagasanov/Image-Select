@@ -6,7 +6,7 @@
  |___|_| |_| |_|\__,_|\__, |\___| |____/ \___|_|\___|\___|\__|
  Web Semantics, Inc.  |___/                                   
 
- Version 1.4
+ Version 1.5
 ```
 
 We designed this plugin extension as a humanized UI element for social networking sites that need to faciliate relations between people. Research shows that people are extremely sensitvie to photos of others, so we needed to revamp the traditional UI elements to make them more intuitive and human.
